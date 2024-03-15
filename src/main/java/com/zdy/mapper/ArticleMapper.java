@@ -23,7 +23,7 @@ public interface ArticleMapper {
     @Update("update article set title=#{title},content=#{content},cover_img=#{coverImg},state=#{state},category_id=#{categoryId},update_time=#{updateTime} where id=#{id}")
     void update(Article article);
 
-    //根据id删除
+    //根據ID删除
     @Delete("delete from article where id=#{id}")
     void deleteById(Integer id);
 }

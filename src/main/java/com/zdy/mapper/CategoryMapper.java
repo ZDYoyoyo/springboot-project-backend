@@ -12,11 +12,11 @@ public interface CategoryMapper {
             "values(#{categoryName},#{categoryAlias},#{createUser},#{createTime},#{updateTime})")
     void add(Category category);
 
-    //查询所有
+    //查詢所有
     @Select("select * from category where create_user = #{userId}")
     List<Category> list(Integer userId);
 
-    //根据id查询
+    //根據ID查詢
     @Select("select * from category where id = #{id}")
     Category findById(Integer id);
 
@@ -24,7 +24,7 @@ public interface CategoryMapper {
     @Update("update category set category_name=#{categoryName},category_alias=#{categoryAlias},update_time=#{updateTime} where id=#{id}")
     void update(Category category);
 
-    //根据id删除
+    //根據ID刪除
     @Delete("delete from category where id=#{id}")
     void deleteById(Integer id);
 }

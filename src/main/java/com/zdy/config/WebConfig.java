@@ -15,15 +15,15 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        //登录接口和注册接口不拦截
-        registry.addInterceptor(loginInterceptor).excludePathPatterns("/user/login","/user/register","/pic/**");
-
+        // 登錄接口和註冊接口不攔截
+        registry.addInterceptor(loginInterceptor).excludePathPatterns("/user/login", "/user/register", "/pic/**");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/pic/**") //虚拟url路径
-                .addResourceLocations("classpath:/files/"); //真实本地路径
-                //.addResourceLocations("classpath:/static/files/"); //真实本地路径
+        registry.addResourceHandler("/pic/**") // 虛擬URL路徑
+                .addResourceLocations("classpath:/files/"); // 真實本地路徑
+        //.addResourceLocations("classpath:/static/files/"); // 真實本地路徑
     }
+
 }

@@ -1,7 +1,6 @@
 package com.zdy.controller;
 
 import com.zdy.pojo.Article;
-import com.zdy.pojo.Category;
 import com.zdy.pojo.PageBean;
 import com.zdy.pojo.Result;
 import com.zdy.service.ArticleService;

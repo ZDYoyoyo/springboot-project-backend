@@ -10,6 +10,6 @@ spring:
       port: 6379
 mybatis:
   configuration:
-    map-underscore-to-camel-case: true #开启驼峰命名和下划线命名的自动转换
+    map-underscore-to-camel-case: true #開啟駝峰命名和下劃線命名的自動轉換
 server:
   port: 8080

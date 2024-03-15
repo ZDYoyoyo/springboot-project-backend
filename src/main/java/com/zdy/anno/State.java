@@ -11,15 +11,16 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Documented//元注解
-@Target({ FIELD})//元注解
-@Retention(RUNTIME)//元注解
-@Constraint(validatedBy = { StateValidation.class})//指定提供校验规则的类
+@Documented // 元註解
+@Target({ FIELD }) // 元註解
+@Retention(RUNTIME) // 元註解
+@Constraint(validatedBy = { StateValidation.class }) // 指定提供校驗規則的類
 public @interface State {
-    //提供校验失败后的提示信息
-    String message() default "state参数的值只能是已发布或者草稿";
-    //指定分组
-    Class<?>[] groups() default { };
-    //负载  获取到State注解的附加信息
-    Class<? extends Payload>[] payload() default { };
+    // 提供校驗失敗後的提示信息
+    String message() default "state參數的值只能是已發布或者草稿";
+    // 指定分組
+    Class<?>[] groups() default {};
+    // 負載  獲取到State註解的附加信息
+    Class<? extends Payload>[] payload() default {};
 }
+

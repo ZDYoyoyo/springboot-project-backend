@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserMapper {
-    //根据用户名查询用户
+    //根據使用者名稱查詢使用者
     @Select("select * from user where username=#{username}")
     User findByUserName(String username);
 
