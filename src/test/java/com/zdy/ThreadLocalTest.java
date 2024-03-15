@@ -6,22 +6,22 @@ public class ThreadLocalTest {
 
 //    @Test
     public void testThreadLocalSetAndGet(){
-        //提供一个ThreadLocal对象
+        // 提供一個ThreadLocal物件
         ThreadLocal tl = new ThreadLocal();
 
-        //开启两个线程
+        // 開啟兩個執行緒
         new Thread(()->{
-            tl.set("萧炎");
+            tl.set("小明");
             System.out.println(Thread.currentThread().getName()+": "+tl.get());
             System.out.println(Thread.currentThread().getName()+": "+tl.get());
             System.out.println(Thread.currentThread().getName()+": "+tl.get());
-        },"蓝色").start();
+        },"綠色").start();
 
         new Thread(()->{
-            tl.set("药尘");
+            tl.set("小王");
             System.out.println(Thread.currentThread().getName()+": "+tl.get());
             System.out.println(Thread.currentThread().getName()+": "+tl.get());
             System.out.println(Thread.currentThread().getName()+": "+tl.get());
-        },"绿色").start();
+        },"藍色").start();
     }
 }

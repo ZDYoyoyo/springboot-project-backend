@@ -8,15 +8,15 @@ import org.springframework.data.redis.core.ValueOperations;
 
 import java.util.concurrent.TimeUnit;
 
-@SpringBootTest//如果在测试类上添加了这个注解,那么将来单元测试方法执行之前,会先初始化Spring容器
+@SpringBootTest// 如果在測試類上添加了這個註解，那麼將來單元測試方法執行之前，會先初始化Spring容器
 public class RedisTest {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
-
+    
 //    @Test
     public void testSet(){
-        //往redis中存储一个键值对  StringRedisTemplate
+        // 往redis中存儲一個鍵值對  StringRedisTemplate
         ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
 
         operations.set("username","zhangsan");
@@ -25,10 +25,9 @@ public class RedisTest {
 
 //    @Test
     public void testGet(){
-        //从redis中获取一个键值对
+        // 從redis中獲取一個鍵值對
         ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
         System.out.println(operations.get("username"));
         System.out.println(operations.get("id"));
-
     }
 }
