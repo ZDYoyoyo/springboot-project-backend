@@ -5,19 +5,19 @@ import com.zdy.pojo.Category;
 import java.util.List;
 
 public interface CategoryService {
-    //新增分类
+    // 新增分類
     void add(Category category);
 
-
-//    列表查询
+    // 列表查詢
     List<Category> list();
 
-    //根据id查询分类信息
+    // 根據id查詢分類信息
     Category findById(Integer id);
 
-    //更新分类
+    // 更新分類
     void update(Category category);
 
-    //删除分类
+    // 刪除分類
     void deleteById(Integer id);
+
 }

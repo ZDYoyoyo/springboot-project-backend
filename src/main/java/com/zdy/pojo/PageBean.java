@@ -4,11 +4,11 @@ package com.zdy.pojo;
 
 import java.util.List;
 
-//分页返回结果对象
+// 分頁返回結果物件
 
 public class PageBean<T>{
-    private Long total;//总条数
-    private List<T> items;//当前页数据集合
+    private Long total; // 總條數
+    private List<T> items; // 當前頁數據集合
 
     public PageBean() {
     }

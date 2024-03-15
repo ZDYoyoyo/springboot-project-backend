@@ -4,7 +4,6 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zdy.mapper.ArticleMapper;
 import com.zdy.pojo.Article;
-import com.zdy.pojo.Category;
 import com.zdy.pojo.PageBean;
 import com.zdy.service.ArticleService;
 import com.zdy.utils.ThreadLocalUtil;
@@ -23,7 +22,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void add(Article article) {
-        //补充属性值
+        //補充屬性值
         article.setCreateTime(LocalDateTime.now());
         article.setUpdateTime(LocalDateTime.now());
 
@@ -36,24 +35,25 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public PageBean<Article> list(Integer pageNum, Integer pageSize, Integer categoryId, String state) {
-        //1.创建PageBean对象
+        // 1. 创建 PageBean 對象
         PageBean<Article> pb = new PageBean<>();
 
-        //2.开启分页查询 PageHelper
-        PageHelper.startPage(pageNum,pageSize);
+        // 2. 開啟分頁查詢 PageHelper
+        PageHelper.startPage(pageNum, pageSize);
 
-        //3.调用mapper
-        Map<String,Object> map = ThreadLocalUtil.get();
+        // 3. 調用mapper
+        Map<String, Object> map = ThreadLocalUtil.get();
         Integer userId = (Integer) map.get("id");
-        List<Article> as = articleMapper.list(userId,categoryId,state);
-        //Page中提供了方法,可以获取PageHelper分页查询后 得到的总记录条数和当前页数据
+        List<Article> as = articleMapper.list(userId, categoryId, state);
+        // Page中提供了方法,可以獲取PageHelper分頁查詢後得到的總記錄條數和當前頁數據
         Page<Article> p = (Page<Article>) as;
 
-        //把数据填充到PageBean对象中
+        // 將數據填充到PageBean對象中
         pb.setTotal(p.getTotal());
         pb.setItems(p.getResult());
         return pb;
     }
+
 
     @Override
     public Article findById(Integer id) {

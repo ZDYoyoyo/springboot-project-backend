@@ -9,16 +9,16 @@ import java.time.LocalDateTime;
 
 public class Category {
     @NotNull(groups = Update.class)
-    private Integer id;//主键ID
+    private Integer id; // 主鍵ID
     @NotEmpty
-    private String categoryName;//分类名称
+    private String categoryName; // 分類名稱
     @NotEmpty
-    private String categoryAlias;//分类别名
-    private Integer createUser;//创建人ID
+    private String categoryAlias; // 分類別名
+    private Integer createUser; // 創建人ID
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createTime;//创建时间
+    private LocalDateTime createTime; // 創建時間
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updateTime;//更新时间
+    private LocalDateTime updateTime; // 更新時間
 
     public interface Add extends Default { //不用extends也可以
 

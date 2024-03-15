@@ -13,25 +13,25 @@ import java.time.LocalDateTime;
 
 public class Article {
     @NotNull(groups = Update.class)
-    private Integer id;//主键ID
+    private Integer id; // 主鍵ID
     @NotEmpty
     @Pattern(regexp = "^\\S{1,10}$")
-    private String title;//文章标题
+    private String title; // 文章標題
     @NotEmpty
-    private String content;//文章内容
+    private String content; // 文章內容
     @NotEmpty
     @URL
-    private String coverImg;//封面图像
+    private String coverImg; // 封面圖像
 
     @State
-    private String state;//发布状态 已发布|草稿
+    private String state; // 發布狀態 已發布|草稿
     @NotNull
-    private Integer categoryId;//文章分类id
-    private Integer createUser;//创建人ID
+    private Integer categoryId; // 文章分類ID
+    private Integer createUser; // 創建人ID
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createTime;//创建时间
+    private LocalDateTime createTime; // 創建時間
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime updateTime;//更新时间
+    private LocalDateTime updateTime; // 更新時間
 
     public interface Add extends Default { //不用extends也可以
 

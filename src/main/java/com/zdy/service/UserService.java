@@ -3,16 +3,16 @@ package com.zdy.service;
 import com.zdy.pojo.User;
 
 public interface UserService {
-    //根据用户名查询用户
+    // 根據使用者名稱查詢使用者
     User findByUserName(String username);
 
-    //注册
+    // 註冊
     void register(String username, String password);
 
-    //更新
+    // 更新
     void update(User user);
 
-    //更新头像
+    // 更新頭像
     void updateAvatar(String avatarUrl);
 
 

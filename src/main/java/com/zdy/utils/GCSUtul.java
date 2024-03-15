@@ -16,13 +16,13 @@ public class GCSUtul {
     private static final String BUCKET_NAME = "springboot_project_bucket";
 
     public static String uploadFile(String fileName, InputStream in) throws IOException {
-        //要上传的本地文件的绝对路径
+        //要上傳的本地檔案的絕對路徑
 //        String filePath = "C:\\Users\\User\\Desktop\\Imgur Album  Sakura\\1 - d5p4ldT.jpg";
 
-        //读取本地存储的服务账号的json密钥，拿到该服务账号的权限
+        //讀取本地存儲的服務帳號的JSON密鑰，以獲取該服務帳號的權限。
 //        GoogleCredentials credentials= GoogleCredentials.fromStream(new FileInputStream("C:\\Users\\User\\Downloads\\grand-plasma-416711-f334dbf7ffb0.json"))
 //                .createScoped(Lists.newArrayList("https://www.googleapis.com/auth/cloud-platform"));
-        //直接將密鑰寫死
+        //直接將金鑰寫入程式碼中。
         GoogleCredentials credentials = ServiceAccountCredentials.fromStream(
                 new ByteArrayInputStream(
                         // 將JSON內容作為字節數組直接寫在程式碼中
@@ -42,22 +42,19 @@ public class GCSUtul {
                 )
         ).createScoped("https://www.googleapis.com/auth/cloud-platform");
 
-        //创建服务账号对应的操作对象
+        // 創建服務帳號對應的操作物件
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
 
-        // 将本地指定路径的文件转换为字节
-//        byte[] bytes = Files.readAllBytes(Paths.get(filePath));
-
-        //上传文件图片到指定的存储桶中
-        BlobId blobId=BlobId.of(BUCKET_NAME,fileName);
-//        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("text/plain").build();
-        BlobInfo blobInfo=BlobInfo.newBuilder(blobId).build();
+        // 上傳檔案圖片到指定的存儲桶中
+        BlobId blobId = BlobId.of(BUCKET_NAME, fileName);
+        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
         Blob blob = storage.create(blobInfo, in);
 
-        //修改已经上传的文件类型为 image/jpg
+        // 修改已經上傳的檔案類型為image/jpg
         blob.toBuilder().setContentType("image/jpg").build().update();
 
-        //返回公开访问的地址
+        // 返回公開訪問的地址
         return "https://storage.googleapis.com/" + BUCKET_NAME + "/" + fileName;
+
     }
 }

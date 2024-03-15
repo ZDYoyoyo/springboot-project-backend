@@ -12,22 +12,22 @@ import java.time.LocalDateTime;
 
 public class User {
     @NotNull
-    private Integer id;//主键ID
-    private String username;//用户名
-    @JsonIgnore//让springmvc把当前对象转换成json字符串的时候,忽略password,最终的json字符串中就没有password这个属性了
-    private String password;//密码
-
+    private Integer id; // 主鍵ID
+    private String username; // 使用者名稱
+    @JsonIgnore // 讓Spring MVC在將當前物件轉換成JSON字串時，忽略password，最終的JSON字串中就沒有password這個屬性了
+    private String password; // 密碼
 
     @NotEmpty
     @Pattern(regexp = "^\\S{1,10}$")
-    private String nickname;//昵称
+    private String nickname; // 昵稱
 
     @NotEmpty
     @Email
-    private String email;//邮箱
-    private String userPic;//用户头像地址
-    private LocalDateTime createTime;//创建时间
-    private LocalDateTime updateTime;//更新时间
+    private String email; // 電子郵箱
+    private String userPic; // 使用者頭像地址
+    private LocalDateTime createTime; // 創建時間
+    private LocalDateTime updateTime; // 更新時間
+
 
     public Integer getId() {
         return id;
