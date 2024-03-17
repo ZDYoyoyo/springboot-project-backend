@@ -1,9 +1,11 @@
 spring:
+  profiles:
+    active: local
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/big_event
+    url: jdbc:mysql://${db.host}:3306/big_event
     username: root
-    password: "000000"
+    password: ${db.pw}
   data:
     redis:
       host: localhost
