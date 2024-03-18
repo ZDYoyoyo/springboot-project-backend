@@ -1,3 +1,20 @@
+spring:
+  cloud:
+    gcp:
+      sql:
+        instance-connection-name: grand-plasma-416711:asia-east1:mysql
+        database-name: big_event
+#      credentials:
+#        location: file:./src/main/resources/service-account-key/grand-plasma-416711-f334dbf7ffb0.json
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQLDialect
+#    hibernate:
+#      ddl-auto: update
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://35.229.136.62:3306/big_event
+    username: root
+    password: 123
 db:
   host: 35.229.136.62
   pw: "123"

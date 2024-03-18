@@ -1,11 +1,6 @@
 spring:
   profiles:
     active: deployGCP
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${db.host}:3306/big_event
-    username: root
-    password: ${db.pw}
   data:
     redis:
       host: localhost
