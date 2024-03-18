@@ -9,8 +9,8 @@ import com.zdy.utils.ThreadLocalUtil;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.data.redis.core.StringRedisTemplate;
-//import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +25,8 @@ import java.util.concurrent.TimeUnit;
 public class UserController {
     @Autowired
     private UserService userService;
-//    @Autowired
-//    private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @PostMapping("/register")
     public Result register(@Pattern(regexp = "^\\S{5,16}$") String username, @Pattern(regexp = "^\\S{5,16}$") String password) {
@@ -62,8 +62,8 @@ public class UserController {
             String token = JwtUtil.genToken(claims);
             // 把token存儲到redis中
             // 這裡把token作為key又作為value有一個bug，當在兩個不同瀏覽器同時登錄同一個賬號，它們登錄時使用的是不同的token，一方修改密碼不會影響另外一方的操作
-//            ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
-//            operations.set(token, token, 24, TimeUnit.DAYS);
+            ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
+            operations.set(token, token, 24, TimeUnit.DAYS);
             return Result.success(token);
         }
         return Result.error("密碼錯誤");
@@ -120,8 +120,8 @@ public class UserController {
         //2.調用service完成密碼更新
         userService.updatePwd(newPwd);
         //刪除redis中對應的token
-//        ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
-//        operations.getOperations().delete(token);
+        ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
+        operations.getOperations().delete(token);
         return Result.success();
     }
 
